@@ -1,0 +1,60 @@
+
+.Acerca_Nosotros {
+    padding: 40px 20px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.Acerca_Nosotros h1 {
+    font-size: var(--font-size-large);
+    color: var(--main-bg-color);
+    margin-bottom: 30px;
+}
+
+.Acerca_Cont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.Acerca_Parte {
+    flex: 1 1 calc(33.333% - 20px);
+    max-width: 300px;
+    text-align: center;
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.Acerca_Parte img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.Acerca_Parte h2 {
+    font-size: var(--font-size-medium);
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.Acerca_Parte p {
+    font-size: var(--font-size-small);
+    color: var(--text-color);
+}
+
+html, body {
+    height: 100%; /* Necesario para que funcione */
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0
+}
+.contenido-principal {
+    flex: 1; /* Esto hace que crezca y empuje el footer */
+}

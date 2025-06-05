@@ -1,0 +1,14 @@
+/* Color de fondo y posición */
+.Pie_pag {
+    background-color: #664400; /* Marrón oscuro como el navbar */
+    width: 100%;
+    position: relative; /* Cambia a 'fixed' si quieres que siempre esté visible */
+    bottom: 0;
+    padding: 1rem 0;
+}
+
+/* Texto y alineación */
+.Pie_pag p {
+    color: white;
+    margin-bottom: 0 !important;
+}

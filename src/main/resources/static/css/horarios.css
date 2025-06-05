@@ -1,0 +1,24 @@
+/* Colores para horarios */
+.bg-horario-1 { background-color: #F3A54A !important; } /* Naranja */
+.bg-horario-2 { background-color: #63A621 !important; } /* Verde */
+.bg-horario-3 { background-color: #78D9BE !important; } /* Turquesa */
+
+/* Colores para contenido */
+.bg-contenido-1 { background-color: #FFF3E0 !important; } /* Naranja claro */
+.bg-contenido-2 { background-color: #E8F5E9 !important; } /* Verde claro */
+.bg-contenido-3 { background-color: #E0F7FA !important; } /* Turquesa claro */
+
+/* Ajustes generales */
+.table th {
+    background-color: #664400 !important;
+    color: white !important;
+    padding: 1.2rem 1rem !important;
+}
+
+.table td {
+    vertical-align: middle !important;
+    font-size: 1.1rem;
+    padding: 1.5rem 1rem !important;  /* 24px vertical - 16px horizontal */
+    min-height: 80px;
+    vertical-align: middle !important;
+}

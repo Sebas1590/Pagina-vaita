@@ -1,0 +1,72 @@
+/* Eventos */
+.Eventos {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.Eventos h1 {
+    font-size: var(--font-size-large);
+    color: var(--main-bg-color);
+    margin-bottom: 20px;
+}
+
+.Eventos_Cont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.Eventos_Colum {
+    flex: 1 1 calc(50% - 20px);
+    max-width: 400px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.Eventos_Colum h2 {
+    margin-bottom: 15px;
+    font-size: var(--font-size-medium);
+    color: var(--main-bg-color);
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+.Evento {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.Evento h3 {
+    margin-bottom: 5px;
+    color: darken(var(--main-bg-color), 20%);
+    font-size: var(--font-size-medium);
+}
+
+.Evento p {
+    margin-bottom: 5px;
+    font-size: var(--font-size-small);
+    color: var(--text-color);
+}
+
+.Evento p:last-child {
+    font-style: italic;
+}
+
+/* Colores personalizados */
+.bg-light-brown {
+    background-color: #8B5A2B; /* Marrón claro */
+}
+.text-gold {
+    color: #FFD700; /* Dorado */
+}
+
+/* Espaciado y detalles */
+.card-header {
+    font-weight: 600;
+}

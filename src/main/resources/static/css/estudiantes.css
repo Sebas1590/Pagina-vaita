@@ -1,0 +1,58 @@
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Estilos del título */
+h1 {
+    color: #664400;
+    font-weight: bold;
+}
+
+/* Formulario de Registro */
+form .form-control,
+form .form-select {
+    border: 2px solid #664400;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #664400;
+    border-color: #664400;
+    font-size: 1.1rem;
+}
+
+.btn-primary:hover {
+    background-color: #FFD700;
+    border-color: #FFD700;
+    color: #000;
+}
+
+/* Tabla de estudiantes */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #FFD700 !important;
+    color: #000;
+}
+
+.table th {
+    text-align: center;
+}
+
+.table td {
+    vertical-align: middle;
+    font-size: 1.1rem;
+    padding: 1.2rem 0.8rem;
+    text-align: center;
+}
+
+/* Ajuste de iconos */
+.bi-people-fill {
+    color: #664400;
+    font-size: 2rem;
+}

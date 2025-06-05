@@ -1,0 +1,122 @@
+/* Contacto */
+.Contacto {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.Contacto h1 {
+    font-size: var(--font-size-large);
+    color: var(--main-bg-color);
+    margin-bottom: 20px;
+}
+
+.Contacto_texto {
+    font-size: var(--font-size-medium);
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.Contacto_img img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.Social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.Red_Soc {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.Red_Soc img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    object-fit: contain;
+}
+
+.Red_Soc p {
+    margin-top: 10px;
+    font-size: var(--font-size-small);
+}
+
+.Detalle {
+    font-weight: bold;
+    color: var(--main-bg-color);
+}
+
+/* Formulario de contacto */
+.Formulario_Contacto {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: var(--white-color);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.Formulario_Contacto h2 {
+    font-size: var(--font-size-medium);
+    color: var(--main-bg-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Formulario_Campo {
+    margin-bottom: 30px;
+}
+
+.Formulario_Campo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.Formulario_Campo input,
+.Formulario_Campo select {
+    width: 100%;
+    padding: 10px;
+    font-size: var(--font-size-small);
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.Formulario_Campo input:focus,
+.Formulario_Campo select:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.Formulario_Boton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: var(--font-size-small);
+    font-weight: bold;
+    background-color: var(--main-bg-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.Formulario_Boton:hover {
+    background-color: darken(var(--main-bg-color), 10%);
+}

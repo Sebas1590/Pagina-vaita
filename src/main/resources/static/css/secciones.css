@@ -1,0 +1,46 @@
+.card-title {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #333;
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.Seccion {
+    display: flex;
+    flex-wrap: wrap;  /* Esto permite que las tarjetas se acomoden según el tamaño de la pantalla */
+    justify-content: space-between;  /* Esto asegurará que las tarjetas ocupen todo el espacio disponible */
+    align-items: flex-start;
+    padding: 20px 10px;
+}
+
+.Seccion .col-xl-2, .Seccion .col-lg-2, .Seccion .col-md-3 {
+    margin-bottom: 20px; /* Espacio entre tarjetas cuando se envuelven */
+    max-width: 18%; /* Esto hace que las tarjetas se alarguen de acuerdo con el espacio disponible */
+}
+
+.Seccion .col-md-3, .Seccion .col-sm-6 {
+    margin-bottom: 15px;
+    max-width: 30%; /* Esto ajusta las tarjetas para que se distribuyan mejor en pantallas medianas */
+}
+.Seccion .col-xl-2, .Seccion .col-lg-2 {
+    flex: 0 1 18%; /* Esto ajusta las tarjetas para que no se estiren demasiado y mantengan su tamaño ideal */
+}
+
+.Seccion .col-md-3 {
+    flex: 0 1 30%; /* Esto ayuda en pantallas medianas a estirarse un poco más */
+}
+
+.Seccion .col-sm-6 {
+    flex: 0 1 48%; /* En pantallas pequeñas, las tarjetas ocuparán más espacio sin estar apretadas */
+}

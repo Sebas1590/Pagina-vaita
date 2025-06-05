@@ -1,0 +1,97 @@
+.Cabecera_Princ {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--main-bg-color);
+    color: var(--white-color);
+}
+
+.Logo_naveg {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.Barra_naveg {
+    margin-left: auto;
+}
+
+.Barra_naveg ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.Barra_naveg ul li {
+    margin-left: 15px;
+}
+
+.Barra_naveg ul li a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: var(--font-size-small);
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.Barra_naveg ul li a:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+/* header.css */
+.navbar {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    background-color: #664400 !important; /* Fondo marrón */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #fff !important;
+    position: relative;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #FFD700 !important; /* Dorado al hacer hover */
+}
+
+/* Subrayado animado */
+.navbar-light .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #FFD700;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Ajustes para el logo */
+.navbar-brand img {
+    border-radius: 0 !important;
+}
+
+.navbar-brand img {
+    border-radius: 0 !important;
+}
+.nav-link.active {
+    font-weight: 600;
+    color: #FFD700 !important;
+}

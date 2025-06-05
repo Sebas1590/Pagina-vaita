@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos | Academia de Marinera Vaita</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/contacto.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./images/image.png" type="image/png">
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #664400;">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">
+                <img th:src="@{/images/image.png}" alt="Logo de la Academia" class="img-fluid" style="max-height: 50px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/acerca}">Acerca de Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/eventos}">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/horarios}">Horarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contacto}">Contáctanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/estudiantes}">Estudiantes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Contacto -->
+    <main class="flex-grow-1 py-5">
+        <div class="container">
+            <h1 class="text-center mb-4 display-5">Contáctanos</h1>
+            <p class="lead text-center mb-5">¡Queremos escucharte! Aquí tienes nuestras formas de contacto:</p>
+            
+            <!-- Imagen de contacto -->
+            <div class="text-center mb-5">
+                <img src="./images/Contactanos.jpeg" alt="Contacto" class="img-fluid rounded shadow" style="max-height: 300px;">
+            </div>
+            
+            <!-- Redes Sociales -->
+            <div class="row justify-content-center g-4 mb-5">
+                <!-- WhatsApp -->
+                <div class="col-md-4 text-center">
+                    <a href="https://wa.me/997861103?text=Hola,%20quisiera%20más%20información" 
+                       target="_blank" 
+                       class="text-decoration-none"
+                       data-bs-toggle="modal" data-bs-target="#modalWhatsApp">
+                        <div class="card border-0 shadow-sm h-100 hover-effect">
+                            <div class="card-body">
+                                <img src="./images/Wsp.png" alt="WhatsApp" class="img-fluid mb-3" style="max-height: 60px;">
+                                <h3 class="h5">WhatsApp</h3>
+                                <p class="text-muted">+51 987 654 321</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Facebook -->
+                <div class="col-md-4 text-center">
+                    <a href="https://www.facebook.com/VaitaTaller" 
+                       target="_blank"
+                       class="text-decoration-none"
+                       data-bs-toggle="modal" data-bs-target="#modalFacebook">
+                        <div class="card border-0 shadow-sm h-100 hover-effect">
+                            <div class="card-body">
+                                <img src="./images/facebook.png" alt="Facebook" class="img-fluid mb-3" style="max-height: 60px;">
+                                <h3 class="h5">Facebook</h3>
+                                <p class="text-muted">Academia de Marinera Vaita</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Correo -->
+                <div class="col-md-4 text-center">
+                    <a href="mailto:zenacristiano199@gmail.com" 
+                       target="_blank"
+                       class="text-decoration-none"
+                       data-bs-toggle="modal" data-bs-target="#modalEmail">
+                        <div class="card border-0 shadow-sm h-100 hover-effect">
+                            <div class="card-body">
+                                <img src="./images/Correo.jpg" alt="Correo" class="img-fluid mb-3" style="max-height: 60px;">
+                                <h3 class="h5">Correo Electrónico</h3>
+                                <p class="text-muted">zenacristiano199@gmail.com</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Formulario -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow border-0">
+                        <div class="card-header bg-light-brown text-black">
+                            <h2 class="h4 mb-0">Déjanos tus datos</h2>
+                        </div>
+                        <div class="card-body">
+                            <form id="contactForm" action="#" method="post">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="nombre" class="form-label">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" 
+                                               placeholder="Tu nombre" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edad" class="form-label">Edad:</label>
+                                        <input type="number" class="form-control" id="edad" name="edad" 
+                                               placeholder="Tu edad" min="1" max="120" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="genero" class="form-label">Género:</label>
+                                        <select class="form-select" id="genero" name="genero" required>
+                                            <option value="">Selecciona una opción</option>
+                                            <option value="masculino">Masculino</option>
+                                            <option value="femenino">Femenino</option>
+                                            <option value="otro">Otro</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="telefono" class="form-label">Teléfono:</label>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono" 
+                                               placeholder="Tu número de teléfono" pattern="^\d{9}$" required>
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <button type="submit" class="btn btn-primary w-100 py-2">
+                                            Enviar Mensaje
+                                        </button>
+                                                                               
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Ventanas Modales -->
+    <!-- Modal WhatsApp -->
+    <div class="modal fade" id="modalWhatsApp" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-light-brown text-white">
+                    <h5 class="modal-title">Contactar por WhatsApp</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="./images/Wsp.png" alt="WhatsApp" class="img-fluid mb-3" style="max-height: 80px;">
+                    <p>¿Deseas contactarnos directamente por WhatsApp?</p>
+                    <p class="fw-bold">+51 987 654 321</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://wa.me/997861103?text=Hola,%20quisiera%20más%20información" 
+                       target="_blank" 
+                       class="btn btn-success">
+                        <i class="bi bi-whatsapp"></i> Abrir WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Facebook -->
+    <div class="modal fade" id="modalFacebook" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Visitar Facebook</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="./images/facebook.png" alt="Facebook" class="img-fluid mb-3" style="max-height: 80px;">
+                    <p>¿Deseas visitar nuestra página de Facebook?</p>
+                    <p class="fw-bold">Academia de Marinera Vaita</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://www.facebook.com/VaitaTaller" 
+                       target="_blank" 
+                       class="btn btn-primary">
+                        <i class="bi bi-facebook"></i> Ir a Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Email -->
+    <div class="modal fade" id="modalEmail" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Contactar por Email</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="./images/Correo.jpg" alt="Email" class="img-fluid mb-3" style="max-height: 80px;">
+                    <p>¿Deseas enviarnos un correo electrónico?</p>
+                    <p class="fw-bold">zenacristiano199@gmail.com</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="mailto:zenacristiano199@gmail.com" 
+                       target="_blank" 
+                       class="btn btn-danger">
+                        <i class="bi bi-envelope"></i> Abrir Correo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal Confirmación -->
+<div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Formulario Enviado</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Gracias por contactarnos. Pronto nos comunicaremos contigo.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <!-- Footer -->
+    <footer class="Pie_pag text-center py-3 mt-auto" style="background-color: #664400; color: white;">
+        <p class="mb-0">&copy; 2024 Academia de Marinera Vaita - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Funcionalidad -->
+    <script src="./script.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

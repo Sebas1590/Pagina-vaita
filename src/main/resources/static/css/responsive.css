@@ -1,0 +1,54 @@
+/* Responsividad */
+@media (max-width: 1200px) {
+    .Cabecera_Princ {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .Barra_naveg ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .Eventos_Colum,
+    .Acerca_Parte {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .Principal {
+        height: 50vh;
+    }
+
+    .Titulo {
+        font-size: 2.5em;
+    }
+
+    .Seccion,
+    .Eventos_Colum,
+    .Acerca_Parte {
+        flex: 1 1 100%;
+    }
+
+    .Horarios_Tabl th,
+    .Horarios_Tabl td {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .Titulo {
+        font-size: 2em;
+    }
+
+    .Contacto_texto {
+        font-size: var(--font-size-small);
+    }
+}
