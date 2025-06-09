@@ -1,7 +1,10 @@
 package org.example.paginaacademia.Model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+@Entity
+@Table(name = "estudiante")
 public class Estudiante {
 
     @NotBlank(message = "El nombre es obligatorio")
@@ -16,6 +19,7 @@ public class Estudiante {
     @Pattern(regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ]+$", message = "El apellido solo debe contener letras")
     private String apellidoMaterno;
 
+    @Id
     @NotBlank(message = "El DNI es obligatorio")
     @Pattern(regexp = "^\\d{8}$", message = "El DNI debe tener exactamente 8 dígitos y solo debe contener números")
     private String dni;
@@ -57,7 +61,11 @@ public class Estudiante {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre != null) {
+            this.nombre = nombre.trim();
+        } else {
+            this.nombre = null;
+        }
     }
 
     public String getApellidoPaterno() {
@@ -65,7 +73,11 @@ public class Estudiante {
     }
 
     public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+        if (apellidoPaterno != null) {
+            this.apellidoPaterno = apellidoPaterno.trim();
+        } else {
+            this.apellidoPaterno = null;
+        }
     }
 
     public String getApellidoMaterno() {
@@ -73,7 +85,11 @@ public class Estudiante {
     }
 
     public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+        if (apellidoMaterno != null) {
+            this.apellidoMaterno = apellidoMaterno.trim();
+        } else {
+            this.apellidoMaterno = null;
+        }
     }
 
     public String getDni() {
@@ -97,7 +113,11 @@ public class Estudiante {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if (email != null) {
+            this.email = email.trim();
+        } else {
+            this.email = null;
+        }
     }
 
     public Integer getEdad() {
