@@ -1,16 +1,14 @@
 package org.example.paginaacademia.Controller;
 
 import jakarta.validation.Valid;
-import org.example.paginaacademia.Model.Estudiante;
+import org.example.paginaacademia.Entity.Estudiante;
 import org.example.paginaacademia.Repository.EstudianteRepository;
+import org.example.paginaacademia.Repository.NivelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/estudiantes")
@@ -19,10 +17,14 @@ public class EstudianteController {
     @Autowired
     private EstudianteRepository estudianteRepository;
 
+    @Autowired
+    private NivelRepository nivelRepository;
+
     @GetMapping
     public String mostrarEstudiantes(Model model) {
         model.addAttribute("estudiantes", estudianteRepository.findAll());
         model.addAttribute("nuevoEstudiante", new Estudiante());
+        model.addAttribute("niveles", nivelRepository.findAll());
         return "Estudiantes";
     }
 
@@ -48,6 +50,7 @@ public class EstudianteController {
         model.addAttribute("nuevoEstudiante", estudiante);
         model.addAttribute("estudiantes", estudianteRepository.findAll());
         model.addAttribute("editando", true);
+        model.addAttribute("niveles", nivelRepository.findAll());
         return "Estudiantes";
     }
 

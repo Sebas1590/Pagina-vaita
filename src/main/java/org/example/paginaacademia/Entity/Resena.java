@@ -1,4 +1,4 @@
-package org.example.paginaacademia.Model;
+package org.example.paginaacademia.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

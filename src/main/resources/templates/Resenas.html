@@ -1,105 +1,66 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Reseñas | Academia de marinera Vaita :v</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de Nosotros | Academia de Marinera Vaita</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
     <!-- Estilos personalizados -->
-    <link rel="stylesheet" th:href="@{/css/acerca.css}">
-    <link rel="stylesheet" th:href="@{/css/contacto.css}">
-    <link rel="stylesheet" th:href="@{/css/eventos.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/horarios.css}">
+    <link rel="stylesheet" th:href="@{/css/acerca.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/responsive.css}">
-    <link rel="stylesheet" th:href="@{/css/secciones.css}">
-    <link rel="stylesheet" th:href="@{/css/variables.css}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="./images/image.png" type="image/png">
 </head>
+<body>
+    <div class="scroll-container flex-grow-1">
+        <!-- Barra de navegación -->
+        <div th:replace="layout :: header"></div>
 
-<body class="container py-4">
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #664400;">
-        <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/}">
-                <img th:src="@{/images/image.png}" alt="Logo de la Academia" class="img-fluid" style="max-height: 50px;">
-            </a>
-            <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/acerca}">Acerca de Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/eventos}">Eventos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/horarios}">Horarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/contacto}">Contáctanos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/estudiantes}">Estudiantes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/resenas}">Reseñas</a>
-                    </li>
-                </ul>
+        <h2 class="mb-4">Reseñas del Blog</h2>
+        <div class="mb-5">
+            <div th:each="r : ${resenas}" class="border rounded p-3 mb-3 shadow-sm">
+                <h5 th:text="${r.nombre}">Nombre</h5>
+                <p th:text="${r.contenido}">Contenido</p>
+                <p class="text-warning">⭐ <span th:text="${r.puntuacion}">5</span> / 5</p>
+                <a th:href="@{/resenas/eliminar/{id}(id=${r.id})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Eliminar esta reseña?')">Eliminar</a>
             </div>
         </div>
-    </nav>
 
-    <h2 class="mb-4">Reseñas del Blog</h2>
-    <div class="mb-5">
-        <div th:each="r : ${resenas}" class="border rounded p-3 mb-3 shadow-sm">
-            <h5 th:text="${r.nombre}">Nombre</h5>
-            <p th:text="${r.contenido}">Contenido</p>
-            <p class="text-warning">⭐ <span th:text="${r.puntuacion}">5</span> / 5</p>
-            <a th:href="@{/resenas/eliminar/{id}(id=${r.id})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Eliminar esta reseña?')">Eliminar</a>
-        </div>
+        <h4 class="mb-3">Agregar Reseña</h4>
+        <form th:action="@{/resenas}" th:object="${resena}" method="post" class="border p-4 rounded bg-light">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input th:field="*{nombre}" class="form-control" required>
+                <div th:if="${#fields.hasErrors('nombre')}" class="text-danger" th:errors="*{nombre}"></div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contenido</label>
+                <textarea th:field="*{contenido}" class="form-control" rows="3" required></textarea>
+                <div th:if="${#fields.hasErrors('contenido')}" class="text-danger" th:errors="*{contenido}"></div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Puntuación (1 a 5)</label>
+                <input th:field="*{puntuacion}" type="number" min="1" max="5" class="form-control" required>
+                <div th:if="${#fields.hasErrors('puntuacion')}" class="text-danger" th:errors="*{puntuacion}"></div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+
     </div>
 
-    <h4 class="mb-3">Agregar Reseña</h4>
-    <form th:action="@{/resenas}" th:object="${resena}" method="post" class="border p-4 rounded bg-light">
-        <div class="mb-3">
-            <label class="form-label">Nombre</label>
-            <input th:field="*{nombre}" class="form-control" required>
-            <div th:if="${#fields.hasErrors('nombre')}" class="text-danger" th:errors="*{nombre}"></div>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Contenido</label>
-            <textarea th:field="*{contenido}" class="form-control" rows="3" required></textarea>
-            <div th:if="${#fields.hasErrors('contenido')}" class="text-danger" th:errors="*{contenido}"></div>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Puntuación (1 a 5)</label>
-            <input th:field="*{puntuacion}" type="number" min="1" max="5" class="form-control" required>
-            <div th:if="${#fields.hasErrors('puntuacion')}" class="text-danger" th:errors="*{puntuacion}"></div>
-        </div>
-
-        <button type="submit" class="btn btn-success">Guardar</button>
-    </form>
-
     <!-- Footer -->
-    <footer class="Pie_pag text-center py-3 mt-auto" style="background-color: #664400; color: white;">
-        <p class="mb-0">&copy; 2024 Academia de Marinera Vaita - Todos los derechos reservados.</p>
-    </footer>
+    <div th:replace="layout :: footer"></div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

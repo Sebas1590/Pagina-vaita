@@ -10,5 +10,4 @@ public class PaginaAcademiaApplication {
 
         SpringApplication.run(PaginaAcademiaApplication.class, args);
     }
-
 }

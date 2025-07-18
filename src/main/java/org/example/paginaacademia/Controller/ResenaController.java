@@ -1,7 +1,7 @@
 package org.example.paginaacademia.Controller;
 
 import jakarta.validation.Valid;
-import org.example.paginaacademia.Model.Resena;
+import org.example.paginaacademia.Entity.Resena;
 import org.example.paginaacademia.Repository.ResenaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

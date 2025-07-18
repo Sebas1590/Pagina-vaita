@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html xmlns:th="http://www.thymeleaf.org"
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,67 +30,33 @@
     <body>
         <div class="scroll-container">
             <!-- Barra de navegación -->
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #664400;">
-                <div class="container-fluid">
-                    <a class="navbar-brand" th:href="@{/}">
-                        <img th:src="@{/images/image.png}" alt="Logo de la Academia" class="img-fluid" style="max-height: 50px;">
-                    </a>
-                    <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/}">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/acerca}">Acerca de Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/eventos}">Eventos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/horarios}">Horarios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/contacto}">Contáctanos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/estudiantes}">Estudiantes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/resenas}">Reseñas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <div th:replace="layout :: header"></div>
 
-        <section class="Principal">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 70vh; overflow: hidden;">
-                <div class="carousel-inner h-100">
-                    <div class="carousel-item active h-100">
-                        <img th:src="@{/images/bg3.jpeg}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Fondo 1">
+            <section class="Principal">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 70vh; overflow: hidden;">
+                    <div class="carousel-inner h-100">
+                        <div class="carousel-item active h-100">
+                            <img th:src="@{/images/bg3.jpeg}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Fondo 1">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img th:src="@{/images/bg2.jpeg}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Fondo 2">
+                        </div>
+                        <div class="carousel-item h-100">
+                            <img th:src="@{/images/bg.jpg}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Fondo 3">
+                        </div>
                     </div>
-                    <div class="carousel-item h-100">
-                        <img th:src="@{/images/bg2.jpeg}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Fondo 2">
-                    </div>
-                    <div class="carousel-item h-100">
-                        <img th:src="@{/images/bg.jpg}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Fondo 3">
-                    </div>
-                </div>
 
-                <!-- Botones de control -->
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-              </button>
-            </div>
-        </section>
+                    <!-- Botones de control -->
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                  </button>
+                </div>
+            </section>
 
 
             <section class="Secciones py-5">
@@ -166,11 +132,9 @@
                 </div>
             </section>
 
-        </div> 
-    
-        <footer class="Pie_pag text-center py-4">
-            <p>&copy; 2024 Academia de Marinera Vaita - Todos los derechos reservados.</p>
-        </footer>
+        </div>
+
+        <div th:replace="layout :: footer"></div>
 
         <!-- jQuery y Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
