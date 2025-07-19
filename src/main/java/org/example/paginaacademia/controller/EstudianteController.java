@@ -1,10 +1,11 @@
-package org.example.paginaacademia.Controller;
+package org.example.paginaacademia.controller;
 
 import jakarta.validation.Valid;
-import org.example.paginaacademia.Entity.Estudiante;
-import org.example.paginaacademia.Repository.EstudianteRepository;
-import org.example.paginaacademia.Repository.NivelRepository;
+import org.example.paginaacademia.entity.Estudiante;
+import org.example.paginaacademia.repository.IEstudianteRepository;
+import org.example.paginaacademia.repository.INivelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,64 +16,79 @@ import org.springframework.web.bind.annotation.*;
 public class EstudianteController {
 
     @Autowired
-    private EstudianteRepository estudianteRepository;
+    private IEstudianteRepository IEstudianteRepository;
 
     @Autowired
-    private NivelRepository nivelRepository;
+    private INivelRepository INivelRepository;
 
     @GetMapping
     public String mostrarEstudiantes(Model model) {
-        model.addAttribute("estudiantes", estudianteRepository.findAll());
+        model.addAttribute("estudiantes", IEstudianteRepository.findAll());
         model.addAttribute("nuevoEstudiante", new Estudiante());
-        model.addAttribute("niveles", nivelRepository.findAll());
+        model.addAttribute("niveles", INivelRepository.findAll());
         return "Estudiantes";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public String registrarEstudiante(@Valid @ModelAttribute("nuevoEstudiante") Estudiante estudiante,
                                       BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("estudiantes", estudianteRepository.findAll());
+            model.addAttribute("niveles", INivelRepository.findAll());
+            model.addAttribute("estudiantes", IEstudianteRepository.findAll());
             return "Estudiantes";
         }
 
-        estudianteRepository.save(estudiante);
+        IEstudianteRepository.save(estudiante);
         return "redirect:/estudiantes";
     }
 
     // Mostrar formulario de edición
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/editar/{dni}")
     public String mostrarFormularioEdicion(@PathVariable String dni, Model model) {
-        Estudiante estudiante = estudianteRepository.findById(dni).orElse(null);
+        Estudiante estudiante = IEstudianteRepository.findById(dni).orElse(null);
         if (estudiante == null) {
             return "redirect:/estudiantes";
         }
         model.addAttribute("nuevoEstudiante", estudiante);
-        model.addAttribute("estudiantes", estudianteRepository.findAll());
+        model.addAttribute("estudiantes", IEstudianteRepository.findAll());
         model.addAttribute("editando", true);
-        model.addAttribute("niveles", nivelRepository.findAll());
+        model.addAttribute("niveles", INivelRepository.findAll());
         return "Estudiantes";
     }
 
     // Guardar cambios del estudiante
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/actualizar")
     public String actualizarEstudiante(@Valid @ModelAttribute("nuevoEstudiante") Estudiante estudiante,
                                        BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("estudiantes", estudianteRepository.findAll());
+            model.addAttribute("estudiantes", IEstudianteRepository.findAll());
             model.addAttribute("editando", true);
+            model.addAttribute("niveles", INivelRepository.findAll());
             return "Estudiantes";
         }
 
-        estudianteRepository.save(estudiante);
+        IEstudianteRepository.save(estudiante);
         return "redirect:/estudiantes";
     }
 
     // Eliminar estudiante
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/eliminar/{dni}")
     public String eliminarEstudiante(@PathVariable String dni) {
-        estudianteRepository.deleteById(dni);
+        IEstudianteRepository.deleteById(dni);
         return "redirect:/estudiantes";
+    }
+
+    @GetMapping("filtrar")
+    public String filtrarPorNivel(@RequestParam("nivelId") Long nivelId, Model model) {
+        var estudiantesFiltrados = IEstudianteRepository.findByNivelId(nivelId);
+        model.addAttribute("estudiantes", estudiantesFiltrados);
+        model.addAttribute("niveles", INivelRepository.findAll());
+        model.addAttribute("nuevoEstudiante", new Estudiante());
+        return "Estudiantes";
     }
 
 }

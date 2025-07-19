@@ -27,21 +27,17 @@
         <h2 class="mb-4">Reseñas del Blog</h2>
         <div class="mb-5">
             <div th:each="r : ${resenas}" class="border rounded p-3 mb-3 shadow-sm">
-                <h5 th:text="${r.nombre}">Nombre</h5>
                 <p th:text="${r.contenido}">Contenido</p>
                 <p class="text-warning">⭐ <span th:text="${r.puntuacion}">5</span> / 5</p>
-                <a th:href="@{/resenas/eliminar/{id}(id=${r.id})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Eliminar esta reseña?')">Eliminar</a>
+                <p class="text-muted small">Publicado por: <span th:text="${r.usuario.username}">usuario</span></p>
+                <span th:if="${#authentication.name == r.usuario.username}">
+                    <a th:href="@{/resenas/eliminar/{id}(id=${r.id})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Eliminar esta reseña?')">Eliminar</a>
+                </span>
             </div>
         </div>
 
         <h4 class="mb-3">Agregar Reseña</h4>
         <form th:action="@{/resenas}" th:object="${resena}" method="post" class="border p-4 rounded bg-light">
-            <div class="mb-3">
-                <label class="form-label">Nombre</label>
-                <input th:field="*{nombre}" class="form-control" required>
-                <div th:if="${#fields.hasErrors('nombre')}" class="text-danger" th:errors="*{nombre}"></div>
-            </div>
-
             <div class="mb-3">
                 <label class="form-label">Contenido</label>
                 <textarea th:field="*{contenido}" class="form-control" rows="3" required></textarea>

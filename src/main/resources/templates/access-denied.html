@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>403 - Acceso Denegado</title>
+    <link href="/style.css" rel="stylesheet" />
+</head>
+<body>
+<div class="card">
+    <h2>Acceso Denegado</h2>
+    <p th:text="'Hola ' + ${username} + ', no tienes permiso para acceder a esta sección.'"></p>
+    <a href="/tareas"><button>Ir a Tareas</button></a>
+</div>
+</body>
+</html>

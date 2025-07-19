@@ -29,53 +29,74 @@
     <main class="container py-5">
         <h1 class="text-center mb-4 display-5"><i class="bi bi-people-fill"></i> Gestión de Estudiantes</h1>
 
-        <!-- Formulario de Registro -->
-        <form th:action="${editando} ? @{/estudiantes/actualizar} : @{/estudiantes}" th:object="${nuevoEstudiante}" method="post" class="mb-4">
-        <div class="row g-3">
-                <div class="col-md-2">
-                    <input type="text" th:field="*{nombre}" placeholder="Nombre" class="form-control" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" th:field="*{apellidoPaterno}" placeholder="Apellido Paterno" class="form-control" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('apellidoPaterno')}" th:errors="*{apellidoPaterno}"></div>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" th:field="*{apellidoMaterno}" placeholder="Apellido Materno" class="form-control" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('apellidoMaterno')}" th:errors="*{apellidoMaterno}"></div>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" th:field="*{dni}" placeholder="DNI (8 dígitos)" class="form-control" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" th:field="*{telefono}" placeholder="Teléfono (9 dígitos)" class="form-control" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
-                </div>
-                <div class="col-md-2">
-                    <input type="email" th:field="*{email}" placeholder="Correo" class="form-control" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-                </div>
-                <div class="col-md-2">
-                    <input type="number" th:field="*{edad}" placeholder="Edad" class="form-control" min="0" required>
-                    <div class="text-danger" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></div>
-                </div>
-                <div class="col-md-2">
-                    <select th:field="*{nivel}" class="form-select" required>
-                        <option value="">Nivel</option>
-                        <option th:each="n : ${niveles}" th:value="${n.id}" th:text="${n.nombre}"></option>
-                    </select>
-                    <div class="text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></div>
-                </div>
-                <div class="col-md-12 d-grid mt-2">
-                    <button type="submit" class="btn btn-primary"
-                            th:text="${editando} ? 'Actualizar' : 'Registrar'">
-                    </button>
-
-                </div>
+        <!-- Filtro por nivel -->
+        <form th:action="@{/estudiantes/filtrar}" method="get" class="row g-3 mb-4">
+            <div class="col-md-4">
+                <select name="nivelId" class="form-select" required>
+                    <option value="">Filtrar por nivel</option>
+                    <option th:each="nivel : ${niveles}" th:value="${nivel.id}" th:text="${nivel.nombre}"></option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-success w-100">
+                    <i class="bi bi-filter-circle"></i> Filtrar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a th:href="@{/estudiantes}" class="btn btn-secondary w-100">
+                    <i class="bi bi-x-circle"></i> Quitar filtro
+                </a>
             </div>
         </form>
 
+        <!-- Formulario de Registro -->
+        <th:block th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+            <form th:action="${editando} ? @{/estudiantes/actualizar} : @{/estudiantes}" th:object="${nuevoEstudiante}" method="post" class="mb-4">
+            <div class="row g-3">
+                    <div class="col-md-2">
+                        <input type="text" th:field="*{nombre}" placeholder="Nombre" class="form-control" required>
+                        <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" th:field="*{apellidoPaterno}" placeholder="Apellido Paterno" class="form-control" required>
+                        <div class="text-danger" th:if="${#fields.hasErrors('apellidoPaterno')}" th:errors="*{apellidoPaterno}"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" th:field="*{apellidoMaterno}" placeholder="Apellido Materno" class="form-control" required>
+                        <div class="text-danger" th:if="${#fields.hasErrors('apellidoMaterno')}" th:errors="*{apellidoMaterno}"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" th:field="*{dni}" placeholder="DNI (8 dígitos)" class="form-control" required>
+                        <div class="text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" th:field="*{telefono}" placeholder="Teléfono (9 dígitos)" class="form-control" required>
+                        <div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="email" th:field="*{email}" placeholder="Correo" class="form-control" required>
+                        <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" th:field="*{edad}" placeholder="Edad" class="form-control" min="0" required>
+                        <div class="text-danger" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <select th:field="*{nivel}" class="form-select" required>
+                            <option value="">Nivel</option>
+                            <option th:each="n : ${niveles}" th:value="${n.id}" th:text="${n.nombre}"></option>
+                        </select>
+                        <div class="text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></div>
+                    </div>
+                    <div class="col-md-12 d-grid mt-2">
+                        <button type="submit" class="btn btn-primary"
+                                th:text="${editando} ? 'Actualizar' : 'Registrar'">
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+        </th:block>
 
         <!-- Tabla de estudiantes -->
         <div class="table-responsive">
@@ -84,12 +105,12 @@
                 <tr>
                     <th class="bg-horario-1">Nombre</th>
                     <th class="bg-horario-2">Apellidos</th>
-                    <th class="bg-horario-3">DNI</th>
+                    <th class="bg-horario-3" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">DNI</th>
                     <th class="bg-horario-1">Correo</th>
                     <th class="bg-horario-2">Teléfono</th>
-                    <th class="bg-horario-3">Edad</th>
+                    <th class="bg-horario-3" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Edad</th>
                     <th class="bg-horario-1">Nivel</th>
-                    <th class="bg-horario-2">Acciones</th>
+                    <th class="bg-horario-2" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Acciones</th>
 
                 </tr>
                 </thead>
@@ -97,20 +118,22 @@
                 <tr th:each="estudiante : ${estudiantes}">
                     <td th:text="${estudiante.nombre}"></td>
                     <td th:text="${estudiante.apellidosCompletos}"></td>
-                    <td th:text="${estudiante.dni}"></td>
+                    <td th:text="${estudiante.dni}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}"></td>
                     <td th:text="${estudiante.email}"></td>
                     <td th:text="${estudiante.telefono}"></td>
-                    <td th:text="${estudiante.edad}"></td>
+                    <td th:text="${estudiante.edad}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}"></td>
                     <td th:text="${estudiante.nivel}"></td>
                     <td class="text-center">
-                        <a th:href="@{'/estudiantes/editar/' + ${estudiante.dni}}" class="btn btn-warning btn-sm">
-                            <i class="bi bi-pencil-square"></i> Editar
-                        </a>
-                        <a th:href="@{'/estudiantes/eliminar/' + ${estudiante.dni}}"
-                           class="btn btn-danger btn-sm"
-                           onclick="return confirm('¿Estás seguro de que deseas eliminar este estudiante?');">
-                            <i class="bi bi-trash"></i> Eliminar
-                        </a>
+                        <th:block th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                            <a th:href="@{'/estudiantes/editar/' + ${estudiante.dni}}" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil-square"></i> Editar
+                            </a>
+                            <a th:href="@{'/estudiantes/eliminar/' + ${estudiante.dni}}"
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('¿Estás seguro de que deseas eliminar este estudiante?');">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </a>
+                        </th:block>
                     </td>
                 </tr>
                 <tr th:if="${#lists.isEmpty(estudiantes)}">

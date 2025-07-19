@@ -1,10 +1,7 @@
-package org.example.paginaacademia.Entity;
+package org.example.paginaacademia.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,6 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "estudiantes")
 public class Nivel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
