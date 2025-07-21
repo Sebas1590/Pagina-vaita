@@ -30,7 +30,7 @@
                 <p th:text="${r.contenido}">Contenido</p>
                 <p class="text-warning">⭐ <span th:text="${r.puntuacion}">5</span> / 5</p>
                 <p class="text-muted small">Publicado por: <span th:text="${r.usuario.username}">usuario</span></p>
-                <span th:if="${#authentication.name == r.usuario.username}">
+                <span th:if="${#authentication.name == r.usuario.username or #authorization.expression('hasRole(''ADMIN'')')}">
                     <a th:href="@{/resenas/eliminar/{id}(id=${r.id})}" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Eliminar esta reseña?')">Eliminar</a>
                 </span>
             </div>
